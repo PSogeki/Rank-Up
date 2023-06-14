@@ -1,0 +1,92 @@
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="backgroundAdmin">
+
+    <ion-button class="leftIcon" fill="clear" (click)="backButton()">
+      <ion-icon name="arrow-back-outline" class="iconaBack" size="large"></ion-icon>
+    </ion-button>
+
+    <h1 class="title">Storico Richieste</h1>
+
+    <ion-button (click)="presentAlert()" class="rightIcon" fill="clear">
+      <ion-icon slot="icon-only" name="options-outline" size="large"></ion-icon>
+    </ion-button>
+
+    <div slot="start" class="searchbar">
+      <app-search-bar (ionInput)="ricerca($event)"></app-search-bar>
+    </div>
+
+    <ion-segment class="choise" [(ngModel)] = "segmentValue" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="rule">
+        <ion-label class="segmentText">Regole</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="task">
+        <ion-label class="segmentText">Task</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="prize">
+        <ion-label class="segmentText">Premi</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div class="listBox" *ngIf="segmentValue === 'rule'">
+      <ion-list class="notifications" lines="none">
+
+        <P *ngIf="checkRuleCompletedList">Accettate</P>
+        <ion-item class={{classAccepted}} *ngFor="let rule of rulesCompleted" (click)="clickRule(rule)"  [routerLink]="['/admin-rule-completed']">
+          <ion-icon name={{iconAccepted}} size="small" class="icon"></ion-icon>
+          <ion-label class="label">{{rule?.user?.name}}</ion-label>
+          <ion-label class="label">{{rule?.rule?.name}}</ion-label>
+          <ion-label class="label">{{rule.timestamp}}</ion-label>
+        </ion-item>
+
+        <p *ngIf="checkRuleRejectedList">Rifiutate</p>
+        <ion-item class={{classRejected}} *ngFor="let rule of rulesRejected" (click)="clickRule(rule)"  [routerLink]="['/rule-rejected']">
+          <ion-icon name={{iconRejected}} size="small" class="icon"></ion-icon>
+          <ion-label class="label">{{rule?.user?.name}}</ion-label>
+          <ion-label class="label">{{rule?.rule?.name}}</ion-label>
+          <ion-label class="label">{{rule.timestamp}}</ion-label>
+        </ion-item>
+
+      </ion-list>
+    </div>
+
+    <div class="listBox" *ngIf="segmentValue === 'task'">
+      <ion-list class="notifications" lines="none">
+
+        <p *ngIf="checkTaskCompletedList">Accettati</p>
+        <ion-item class={{classAccepted}} *ngFor="let task of tasksCompleted" (click)="clickTask(task)" [routerLink]="['/completed-task']">
+          <ion-icon name={{iconAccepted}} size="small" class="icon"></ion-icon>
+          <ion-label class="label">{{task?.user?.name}}</ion-label>
+          <ion-label class="label">{{task?.task?.name}}</ion-label>
+          <ion-label class="label">{{task.timestamp}}</ion-label>
+        </ion-item>
+
+        <p *ngIf="checkTaskRejectedList">Rifiutati</p>
+        <ion-item class={{classRejected}} *ngFor="let task of tasksRejected"  (click)="clickTask(task)" [routerLink]="['/task-rejected']">
+          <ion-icon name={{iconRejected}} size="small" class="icon"></ion-icon>
+          <ion-label class="label">{{task?.user?.name}}</ion-label>
+          <ion-label class="label">{{task?.task?.name}}</ion-label>
+          <ion-label class="label">{{task.timestamp}}</ion-label>
+        </ion-item>
+
+      </ion-list>
+    </div>
+
+    <div class="listBox" *ngIf="segmentValue === 'prize'">
+      <ion-list class="notifications" lines="none">
+
+        <p>Premi riscossi</p>
+        <ion-item class={{classAccepted}} *ngFor="let prize of prizes" >
+          <ion-icon name={{iconAccepted}} size="small" class="icon"></ion-icon>
+          <ion-label class="label">{{prize?.user?.name}}</ion-label>
+          <ion-label class="label">{{prize?.prize?.name}}</ion-label>
+          <ion-label class="label">{{prize?.date}}</ion-label>
+        </ion-item>
+
+      </ion-list>
+    </div>
+
+  </div>
+</ion-content>

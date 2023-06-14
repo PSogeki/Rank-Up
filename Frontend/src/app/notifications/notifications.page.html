@@ -1,0 +1,65 @@
+<ion-content [fullscreen]="true" class="bg">
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div [ngSwitch]="type">
+
+    <div *ngSwitchCase="'utente'" class="backgroundUser">
+
+      <ion-button class="leftIcon" (click)="backButton()">
+        <ion-icon name="arrow-back-outline" size="large"></ion-icon>
+      </ion-button>
+
+      <h1 align="center" class="title">Notifiche</h1>
+
+      <ion-segment class="choseUser" value="utente" [(ngModel)]="type" (ionChange)="notificheUser($event)">
+        <ion-segment-button value=utente>
+          <ion-label>Utente</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="admin">
+          <ion-label>Admin</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+      <ion-list class="notifications" lines="none">
+        <ion-item class="item" *ngFor="let n of this.nUser" [routerLink]="['/user/user-notification-description']" (click)="clicknotificationUser(n.id)">
+          <ion-label class="label">{{n.date | date:'yyyy-MM-dd HH:mm:ss'}}</ion-label>
+          <ion-label class="label">{{n.title}}</ion-label>
+          <ion-label class="label">{{n.teamName}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div *ngSwitchCase="'admin'" class="backgroundAdmin">
+
+      <ion-button class="leftIcon" (click)="backButton()">
+        <ion-icon name="arrow-back-outline" size="large"></ion-icon>
+      </ion-button>
+
+      <h1 align="center" class="title">Notifiche</h1>
+
+      <ion-segment class="choseAdmin" value="utente" [(ngModel)]="type" (ionChange)="notificheAdmin($event)">
+        <ion-segment-button value=utente>
+          <ion-label>Utente</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="admin">
+          <ion-label>Admin</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+      <ion-list class="notifications" lines="none">
+        <ion-item class="item" *ngFor="let n of this.nAdmin" [routerLink]="['/admin/admin-notification-description']" (click)="clicknotificationAdmin(n.id)" >
+          <ion-label class="label">{{n.date | date:'yyyy-MM-dd HH:mm:ss'}}</ion-label>
+          <ion-label class="label">{{n.title}}</ion-label>
+          <ion-label class="label">{{n.teamName}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-alert header="Accettare l'utente [nome utente] nel team [nome team]?"
+  [buttons]="alertBtns"></ion-alert>

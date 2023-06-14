@@ -1,0 +1,41 @@
+<ion-content [fullscreen]="true">
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <div class="backgroundAdmin">
+    <ion-button class="leftIcon" (click)="backButton()" fill="clear">
+      <ion-icon name="arrow-back-outline" size="large"></ion-icon>
+    </ion-button>
+
+    <h2 class="title">Aggiungi Utente al Team<br/>{{team.name}}</h2>
+
+    <ion-searchbar placeholder="Cerca" [(ngModel)]="query" (ionChange)="searchUser()"></ion-searchbar>
+
+    <div class="listBox">
+      <ion-list class="list" lines="none">
+        <ion-item-sliding *ngFor="let user of users">
+          <ion-item class="item">
+            <div class="item-div">
+            <img class="imgUser" alt="User" src={{user.photo}}>
+            <ion-label class="nomeUtente">{{user.username}}</ion-label>
+            </div>
+
+          </ion-item>
+          <ion-item-options side="end">
+            <ion-item-option class="option-one">
+              <ion-icon slot="top" name="person-add-outline" size="large" (click)="addAdmin(user.idUser)"></ion-icon>
+              Admin
+            </ion-item-option>
+            <ion-item-option class="option-two">
+              <ion-icon slot="top" name="person-add-outline" size="large" (click)="addUser(user.idUser)"></ion-icon>
+              Utente
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+
+  </div>
+</ion-content>

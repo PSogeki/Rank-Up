@@ -1,0 +1,108 @@
+.title {
+    color: black;
+    text-align: center;
+    margin-top: 8vh;
+    font-weight: bold;
+}
+
+.searchbar {
+    margin-top: 3vh;
+    align-items: center;
+    width: 90%;
+}
+
+.choice {
+  margin-top: 0vh;
+}
+
+ion-segment {
+  --background: var(--ion-color-admin);
+  border-radius: 3vh;
+  padding-top: 0.4vh;
+  padding-bottom: 0.3vh;
+  padding-left: 0.4vh;
+  padding-right: 0.4vh;
+  margin-top: 5vh;
+  width: 38vh;
+  height: 5vh;
+}
+
+ion-segment-button {
+  --border-radius: 3vh;
+  height: 3.75vh;
+}
+
+.segmentText {
+  font-size: 1.9vh;
+}
+
+.optionIcon {
+    position: absolute;
+    --background: transparent;
+    --border-style: none;
+    --box-shadow: none;
+    margin-top: 9vh;
+    margin-left: 35vh;
+    color: var(--ion-color-black);
+    font-size: 20px;
+}
+
+.icon {
+    margin-right: 1vh;
+}
+
+.label {
+    text-align: center;
+    font-size: 16px;
+    margin: 0;
+    height: 64px;
+}
+
+.notifications {
+    margin-top: -1vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+}
+
+.listBox {
+    margin-top: 2vh;
+    width: 90%;
+    height: 58vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    background-color: transparent;
+}
+
+.itemadmin {
+    --background: rgb(252, 147, 147);
+    --border-radius: 28px;
+
+    margin: 0;
+    padding: 0;
+
+    height: 64px;
+    width: 90%;
+
+    align-items: center;
+}
+
+.itemuser {
+    --background: rgb(138, 205, 138);
+    --border-radius: 28px;
+
+    margin: 0;
+    padding: 0;
+
+    height: 64px;
+    width: 90%;
+}
+
+.label {
+    text-align: left;
+    margin-top: 1.2vh;
+    height: 60%;
+    font-size: small;
+}

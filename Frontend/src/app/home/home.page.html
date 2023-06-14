@@ -1,0 +1,52 @@
+<ion-content [fullscreen]="true" >
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="backgroundUser">
+
+    <ion-button class="leftIcon" [routerLink]="['/notifications']">
+      <ion-icon name="notifications-outline" size="large"></ion-icon>
+    </ion-button>
+
+    <ion-button class="rightIcon" [routerLink]="['/user/search-team']">
+      <ion-icon name="search-outline" size="large" class="iconaRicerca"></ion-icon>
+    </ion-button>
+
+    <h1 class="title">Home</h1>
+
+    <app-bt-admin-large (click)="newTeam()" class="margine" [text]="'Crea nuovo team'" [routerLink]="['/create-team']"></app-bt-admin-large>
+
+    <ion-item class="barraricerca">
+      <ion-input class="input-codice-team" placeholder="Codice Team"  [(ngModel)]="codeTeamInput"></ion-input>
+      <ion-button shape="round" class="unisciti" clear (click)="addTeam()">Unisciti</ion-button>
+    </ion-item>
+
+    <div class="list-teams" scroll="true">
+      <ion-grid [ariaColCount]="2">
+        <ion-row>
+          <ion-col *ngFor="let team of teams" sizeLg="6"  sizeMd="6" sizeXs="6" >
+            <div *ngIf="userOrAdmin(team)"class="team-card" (click)="goToTeamUser(team)">
+              <div>
+                <img class="img-team-user" style="height: 150px; width: 150px;" alt="Team" src={{team.photo}} />
+              </div>
+              <div class="team-name">
+                <span>{{team.name}}</span>
+              </div>
+            </div>
+            <div *ngIf="!userOrAdmin(team)" class="team-card" (click)="goToTeamAdmin(team)">
+              <div>
+                <img class="img-team-admin" style="height: 150px; width: 150px;" alt="Team"  src={{team.photo}} />
+              </div>
+              <div class="team-name">
+                <span>{{team.name}}</span>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>
+</ion-content>

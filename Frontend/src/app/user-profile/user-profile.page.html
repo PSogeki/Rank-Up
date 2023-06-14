@@ -1,0 +1,128 @@
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="backgroundUser">
+
+    <img class="imgUser" alt="Utente" src={{user_photo}} />
+
+    <div id="div-image-title">{{user_name}} {{user_surname}}</div>
+
+    <div id="div-container">
+
+
+      <div class="div-large">
+        <div class="div-large-tag">Username</div>
+        <div class="div-large-value">{{user_username}}</div>
+      </div>
+
+      <div class="div-large">
+        <div class="div-large-tag">Email</div>
+        <div class="div-large-value">{{user_email}}</div>
+      </div>
+
+      <div id="div-middle">
+        <ion-grid>
+          <ion-row>
+
+            <ion-col>
+              <div class="div-element">
+                <ion-button class="div-element-icon" (click)="presentAlert1()">
+                  <ion-icon class="icon-black" name="ellipsis-horizontal-outline"></ion-icon>
+
+                </ion-button>
+                <div class="div-element-text">
+                  Cambia nome
+                </div>
+              </div>
+            </ion-col>
+
+            <ion-col>
+              <div class="div-element">
+                <ion-button class="div-element-icon" (click)="presentAlert2()">
+                  <ion-icon class="icon-black" name="ellipsis-horizontal-outline"></ion-icon>
+                </ion-button>
+                <div class="div-element-text">
+                  Cambia username
+                </div>
+              </div>
+            </ion-col>
+
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="div-element">
+                <ion-button class="div-element-icon" id="modalAttached">
+                  <ion-icon class="icon-black" name="person-sharp"></ion-icon>
+                </ion-button>
+                <div class="div-element-text">
+                  Cambia foto
+                </div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="div-element">
+                <ion-button class="div-element-icon" (click)="presentAlert4() ">
+                  <ion-icon class="icon-black" name="mail-outline"></ion-icon>
+                </ion-button>
+                <div class="div-element-text">
+                  Cambia email
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="div-element">
+                <ion-button class="div-element-icon" (click)="presentAlert5()">
+                  <ion-icon class="icon-black" name="eye-outline"></ion-icon>
+                </ion-button>
+                <div class="div-element-text">
+                  Cambia password
+                </div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="div-element">
+                <ion-button class="div-element-icon" (click)="presentAlert9()">
+                  <ion-icon class="icon-black" name="invert-mode-outline"></ion-icon>
+                </ion-button>
+                <div class="div-element-text">
+                  Cambia tema
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+    <app-bt-user-large [text]="'Logout'" [routerLink]="['/login']"></app-bt-user-large>
+
+
+  </div>
+</ion-content>
+
+
+
+<ion-modal trigger="modalAttached">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Modifica Foto</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <div class="modal">
+        <ion-icon name="images-outline" class="icona" size="large"></ion-icon>
+        <ion-button fill="clear">
+          <ion-input type="file" (change)="loadFileFromDevice($event)" id="file-input" accept="image/png, image/jpeg">
+          </ion-input>
+        </ion-button>
+        <div>
+          <app-bt-admin-small text="Annulla" (click)="closeModal()" style="margin-right: 0.5vh;"></app-bt-admin-small>
+          <app-bt-user-small text="Conferma" (click)="attach()" style="margin-left: 0.5vh;"></app-bt-user-small>
+        </div>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

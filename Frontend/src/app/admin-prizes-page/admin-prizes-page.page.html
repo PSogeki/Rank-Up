@@ -1,0 +1,34 @@
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="backgroundAdmin">
+
+    <ion-button class="leftIcon" fill="clear" (click)="backButton()">
+      <ion-icon name="arrow-back-outline" size="large" color="dark"></ion-icon>
+    </ion-button>
+
+    <ion-button class="rightIcon" fill="clear" [routerLink] = "['/create-prize']">
+      <ion-icon name="add-circle-outline" size="large" color="dark"></ion-icon>
+    </ion-button>
+
+    <h1 class="title">Premi<br/>{{team.name}}</h1>
+
+    <div class="listBox">
+      <ion-list class="list">
+        <ion-item-sliding id="div-rule-task" *ngFor="let prize of prizes">
+          <ion-item id="div-rule-task">
+            <ion-label class="label">{{prize.name}}</ion-label>
+          <ion-button class="fakebutton" [disabled]="true">{{prize.price}}</ion-button>
+
+        </ion-item>
+          <ion-item-options side="end">
+            <ion-item-option>
+              <ion-icon name="trash-outline" size="large" color="danger" (click)="confirmRemovePrize(prize.id)"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

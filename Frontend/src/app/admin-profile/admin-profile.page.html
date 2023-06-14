@@ -1,0 +1,47 @@
+<ion-content [fullscreen]="true">
+  <div class="backgroundAdmin">
+    <ion-button class="leftIcon" (click)="backButton()">
+      <ion-icon name="arrow-back-outline" size="large"></ion-icon>
+    </ion-button>
+
+    <img class="imgUser" alt="Utente"  src={{user.photo}} />
+    <h1 class="nameUser">{{userJoin.user.name}}</h1>
+    <h2 class="scoreUser">Punti: {{userJoin.points}}</h2>
+
+    <div class="switch">
+      <ion-segment value=1 (ionChange)="segmentChanged($event)" id="bait">
+        <ion-segment-button value=1>
+          <ion-label class="segmentText">Compiti completati</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value=2>
+          <ion-label class="segmentText">Premi riscossi</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+
+
+    <div class="listBox" *ngIf="!stato">
+        <ion-list *ngFor="let activity of activities">
+          <div class="div-label-fakebutton" *ngIf="ruleOrTask(activity)" (click)="clickRule(activity)" (click)="goToRule(activity)">
+            <div class="label">{{activity.rule.name}}</div>
+            <ion-button class="fakebutton" [disabled]="true">{{activity.rule.points}} pt</ion-button>
+          </div>
+          <div class="div-label-fakebutton" *ngIf="!ruleOrTask(activity)" (click)="clickTask(activity)" (click)="goToTask(activity)">
+            <div class="label">{{activity.task.name}}</div>
+            <ion-button class="fakebutton" [disabled]="true">{{activity.task.points}} pt</ion-button>
+          </div>
+      </ion-list>
+    </div>
+
+    <div class="listBox" *ngIf="stato">
+      <div class="item" *ngFor="let prize of prizes">
+        <div class="div-label-fakebutton">
+          <div class="label" >{{prize.name}}</div>
+          <ion-button class="fakebutton">{{prize.price}} pt</ion-button>
+        </div>
+      </div>
+  </div>
+
+  </div>
+</ion-content>

@@ -1,0 +1,138 @@
+.title {
+  margin-top: 8vh;
+}
+
+.insertImage{
+  --background: transparent;
+
+  color: var(--ion-color-black);
+  text-decoration: underline;
+
+  margin-top: 1vh;
+}
+
+.teamCode{
+  margin-top: 5vh;
+}
+
+h4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.code{
+  text-align: center;
+}
+
+.insertName{
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+.teamName {
+  width: 70%;
+}
+
+.membersquare {
+  --background: var(--ion-color-grey);
+  position: absolute;
+  border-radius: 28px;
+
+  margin-top: 50vh;
+  margin-right: 20vh;
+
+  height: 16vh;
+  width: 16vh;
+}
+
+.rulesquare{
+  --background: var(--ion-color-grey);
+  position: absolute;
+  border-radius: 28px;
+
+  margin-top: 50vh;
+  margin-left: 20vh;
+
+  height: 16vh;
+  width: 16vh;
+}
+
+.icon {
+  align-items: center;
+  vertical-align: middle;
+  padding-bottom: 5vh;
+  padding-left: 2.3vh;
+  padding-top: 3.5vh;
+
+  height: 8vh;
+  width: 8vh;
+}
+
+
+.memberlabel {
+  position: absolute;
+  text-align: center;
+  height: 100px;
+  width: 130px;
+  margin-top: 67vh;
+  margin-right: 20vh;
+}
+
+.rulelabel {
+  position: absolute;
+  text-align: center;
+  height: 100px;
+  width: 130px;
+  margin-top: 67vh;
+  margin-left: 20vh;
+}
+
+.privacyTeam{
+  color: var(--ion-color-black);
+  --background: var(--ion-color-grey);
+
+  font-size: 22px;
+  font-weight: bold;
+  --border-radius: 28px;
+
+  height: 8vh;
+  width: 40vh;
+
+  margin-top: 25vh;
+}
+
+.createTeam{
+color: var(--ion-color-black);
+--background: var(--ion-color-admin);
+
+font-size: 22px;
+font-weight: bold;
+--border-radius: 28px;
+
+height: 8vh;
+width: 40vh;
+
+margin-top: 3vh;
+}
+
+ion-alert.custom-alert {
+  --backdrop-opacity: 0.6;
+}
+
+.custom-alert .alert-button-group {
+  padding: 8px;
+}
+
+.icon-attach{
+  margin-top: 2vh;
+}
+
+.modal {
+  text-align: center;
+}
+
+.error-message {
+  align-items: center;
+  color: red;
+  font-size: 15px;
+}

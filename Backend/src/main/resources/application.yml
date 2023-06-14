@@ -1,0 +1,11 @@
+# file per il collegamento con il db
+# url da sostituire con l'attuale url una volta dockerizzato il backend url: jdbc:mariadb://mariadb:3306/RankUpDB
+
+spring:
+    datasource:
+        url: jdbc:mariadb://mariadb:3306/RankUpDB
+        username: root
+        password: root
+    jpa:
+        hibernate:
+            ddl-auto: update

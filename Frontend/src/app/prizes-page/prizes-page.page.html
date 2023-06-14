@@ -1,0 +1,36 @@
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <div class="backgroundUser">
+    <ion-button class="leftIcon" (click)="backButton()">
+      <ion-icon name="arrow-back-outline" size="large"></ion-icon>
+    </ion-button>
+
+    <img class="imgUser" alt="Utente"  src={{user_photo}} />
+
+    <div id="div-image-title">{{user.name}} </div>
+
+    <div id="div-points">Punti: {{userJoinsTeam.points}}</div>
+
+    <div id="div-title-prizes">Premi</div>
+    <div id="div-prizes" scroll="true">
+      <div id="div-prize" *ngFor="let prize of prizes">
+
+        <div id="div-div-prizes">
+          <div id="div-div-prizes-name">{{prize.name}}</div>
+          <ion-button *ngIf="userJoinsTeam.points >= prize.price; else conditionFalse"
+            (click)="showAlert(prize.name, prize.price, prize.id)" id="div-div-prizes-button">{{prize.price}}
+            pt.</ion-button>
+          <ng-template #conditionFalse>
+            <ion-button [disabled]="true" (click)="showAlert(prize.name, prize.price, prize.id)"
+              id="div-div-prizes-button-disable">{{prize.price}} pt.</ion-button>
+          </ng-template>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</ion-content>

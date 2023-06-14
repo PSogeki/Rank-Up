@@ -1,0 +1,28 @@
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="backgroundUser">
+
+    <ion-button class="leftIcon" fill="clear" (click)="backButton()">
+      <ion-icon name="arrow-back-outline" size="large" color="dark"></ion-icon>
+    </ion-button>
+
+    <h1 class="title">Cerca Team</h1>
+
+    <div class="searchbar">
+      <app-search-bar (ionInput)="ricerca($event)"></app-search-bar>
+    </div>
+
+    <div class="listBox" *ngIf="this.teams">
+      <div class="grind">
+        <div class="team-card" (click)="presentAlert(team.idTeam)" *ngFor="let team of this.teams">
+          <img fill="clear" alt="Team" style="height: 150px; width: 150px;" src={{team.photo}} />
+          <h4 class="team-name">
+            {{team.name}}
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

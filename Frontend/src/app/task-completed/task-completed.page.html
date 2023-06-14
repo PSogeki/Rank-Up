@@ -1,0 +1,31 @@
+<ion-content [fullscreen]="true">
+  <div class="backgroundUser">
+
+    <ion-button class="leftIcon" fill="clear" (click)="backButton()">
+      <ion-icon name="arrow-back-outline" class="iconaBack" size="large"></ion-icon>
+    </ion-button>
+
+    <h1 class="title">Task completato da<br/>{{user.name}}</h1>
+
+    <div class="div-element-bar">
+      <app-user-element-bar class="elementbar" [buttonText]="'Task'" labelText={{task.name}}></app-user-element-bar>
+      <div class="space-div"></div>
+      <app-user-element-bar class="elementbar" [buttonText]="'Punti'" labelText={{task.points}}></app-user-element-bar>
+    </div>
+
+    <ion-label class="label">Commento:</ion-label>
+    <ion-textarea class="commentArea" fill="outline" placeholder={{taskCompleted.comment}} shape="round" [readonly] = true></ion-textarea>
+
+    <ion-grid class="buttons-grid">
+      <ion-row>
+        <ion-col class="left-col">
+          <ion-button class="visualize-attached" *ngIf="this.url !== null" href="{{this.url}}">Visualizza<br/>Allegato</ion-button>
+          <ion-button class="visualize-attached" *ngIf="this.url === null" (click)="nullAttachedAlert()">Visualizza<br/>Allegato</ion-button>
+        </ion-col>
+        <ion-col class=right-col>
+          <app-bt-user-small shape="round"  clear [text]="'Chiudi'" (click)="backButton()"></app-bt-user-small>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

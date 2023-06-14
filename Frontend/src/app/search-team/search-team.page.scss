@@ -1,0 +1,39 @@
+.title {
+  margin-top: 8vh;
+  color: var(--ion-color-black);
+}
+
+.searchbar {
+  margin-top: 3vh;
+  align-items: center;
+  width: 85%;
+}
+
+.team-card {
+  margin-top: 1vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.listBox {
+  margin-top: 5vh;
+  width: 90%;
+  height: 55vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: transparent;
+}
+
+img{
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+}
+
+.grind {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}

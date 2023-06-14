@@ -1,0 +1,14 @@
+<ion-content [fullscreen]="true">
+  <div class="backgroundAdmin">
+
+    <ion-button class="leftIcon" (click)="backButton()">
+      <ion-icon name="arrow-back-outline" size="large"></ion-icon>
+    </ion-button>
+
+    <h1 align="center" class="title">{{notification.title}}</h1>
+
+    <h4 align="center" class="subtitle">{{notification.date}}</h4>
+
+    <ion-textarea fill="outline" shape="round" [readonly] = true>{{notification.description}}</ion-textarea>
+  </div>
+</ion-content>
